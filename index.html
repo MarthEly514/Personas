@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas. | SVGenerator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Personas.</h1>
+        <div class="header-actions">
+            <button class="btn secondary" id="reset-btn">Reset</button>
+            <button class="btn" id="export-svg-btn">Export SVG</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="preview-container">
+            <div id="persona-frame">
+                <!-- This is where the generated SVG will be injected by app.js -->
+                <div id="persona-svg-placeholder"></div>
+            </div>
+        </div>
+
+        <aside id="controls-panel">
+            <!-- Modern, clean accordion using native HTML tags -->
+
+            <!-- 1. Structure -->
+            <details class="control-group" open>
+                <summary>Structure</summary>
+                <div class="group-content">
+                    <label>Skin Tone</label>
+                    <div id="skin-tone-grid" class="color-grid"></div>
+                </div>
+            </details>
+
+            <!-- 2. Hair -->
+            <details class="control-group">
+                <summary>Hair Style & Color</summary>
+                <div class="group-content">
+                    <label>Hair Style</label>
+                    <div id="hair-style-grid" class="color-grid"></div>
+
+                    <div class="color-picker-row">
+                        <label>Hair Color</label>
+                        <input type="color" id="hair-color-picker" value="#000000">
+                        <span class="color-value">#000000</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 3. Face Features -->
+            <details class="control-group">
+                <summary>Face Features</summary>
+                <div class="group-content">
+                    <label>Iris Color</label>
+                    <input type="color" id="eye-color-picker" value="#000000">
+                    <label>Mouth Style
+                        <select id="mouth-select"></select>
+                    </label>
+                    <label>Eyes Style
+                        <select id="eyes-select"></select>
+                    </label>
+                    <label class="toggle-row">Enable Blush
+                        <input type="checkbox" id="blush-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </details>
+
+            <!-- 4. Clothes -->
+            <details class="control-group">
+                <summary>Clothes Styles & Colors</summary>
+                <div class="group-content">
+                    <label>Top Style</label>
+                    <div id="top-style-grid" class="color-grid"></div>
+                    <div class="color-picker-row">
+                        <label>Top Color</label>
+                        <input type="color" id="top-color-picker" value="#B24F6C">
+                        <span class="color-value">#B24F6C</span>
+                    </div>
+                    <label>Bottom Style
+                        <select id="bottom-select"></select>
+                    </label>
+                    <div class="color-picker-row">
+                        <label>Bottom Color</label>
+                        <input type="color" id="bottom-color-picker" value="#929292">
+                    </div>
+                </div>
+            </details>
+        </aside>
+    </main>
+
+    <!-- Load scripts in logical order -->
+    <script src="variants.js"></script> <!-- Define Data First -->
+    <script src="persona-svg.js"></script> <!-- Define SVG Factory -->
+    <script src="app.js"></script> <!-- Glue Logic (Loads UI and binds events) -->
+
+</body>
+
+</html>
