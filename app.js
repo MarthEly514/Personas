@@ -83,14 +83,14 @@ function populateHairStyleGrid() {
         cell.style.backgroundImage = `url('/images/hair/${style.id}.png')`;
         // cell.style.backgroundColor = 'transparent';
         // cell.textContent = '';
- 
+
         cell.addEventListener('click', () => {
             personaState.hairStyle = style.id;
-            
+
             // Update visual selection (scoped to this specific grid)
             document.querySelectorAll('#hair-style-grid .color-cell').forEach(c => c.classList.remove('selected'));
             cell.classList.add('selected');
-            
+
             renderPersona();
         });
 
@@ -127,11 +127,11 @@ function populateTopStyleGrid() {
 
         cell.addEventListener('click', () => {
             personaState.topStyle = style.id;
-            
+
             // Update visual selection (scoped to this specific grid)
             document.querySelectorAll('#top-style-grid .color-cell').forEach(c => c.classList.remove('selected'));
             cell.classList.add('selected');
-            
+
             renderPersona();
         });
 
@@ -145,6 +145,47 @@ function populateTopStyleGrid() {
 // Helper to sync the top style grid selection with the current state
 function updateTopStyleSelection() {
     document.querySelectorAll('#top-style-grid .color-cell').forEach(cell => {
+        if (cell.dataset.value === personaState.topStyle) {
+            cell.classList.add('selected');
+        } else {
+            cell.classList.remove('selected');
+        }
+    });
+}
+
+// Helper to populate the top style grid
+function populateBottomStyleGrid() {
+    const grid = document.getElementById('bottom-style-grid');
+    grid.innerHTML = '';
+
+    VARIANTS.clothesBottoms.forEach(style => {
+        const cell = document.createElement('div');
+        cell.className = 'color-cell';
+        cell.dataset.value = style.id;
+        cell.title = style.name;
+
+        cell.style.backgroundImage = `url('/images/clothes/bottom/${style.id}.png')`;
+
+        cell.addEventListener('click', () => {
+            personaState.bottomStyle = style.id;
+
+            // Update visual selection (scoped to this specific grid)
+            document.querySelectorAll('#bottom-style-grid .color-cell').forEach(c => c.classList.remove('selected'));
+            cell.classList.add('selected');
+
+            renderPersona();
+        });
+
+        grid.appendChild(cell);
+    });
+
+    // Set initial selection based on default state
+    updateBottomStyleSelection();
+}
+
+// Helper to sync the top style grid selection with the current state
+function updateBottomStyleSelection() {
+    document.querySelectorAll('#bottom-style-grid .color-cell').forEach(cell => {
         if (cell.dataset.value === personaState.topStyle) {
             cell.classList.add('selected');
         } else {
@@ -170,13 +211,15 @@ function initApp() {
     populateHairStyleGrid();
     // top clothes
     populateTopStyleGrid();
+    // bottom clothes
+    populateBottomStyleGrid();
     // Populate all dynamic dropdowns directly from variants.js
     // populateSelect('skin-select', VARIANTS.skinTones);
     // populateSelect('hair-style-select', VARIANTS.hairStyles);
     populateSelect('mouth-select', VARIANTS.mouths);
     populateSelect('eyes-select', VARIANTS.eyes);
     // populateSelect('top-select', VARIANTS.clothesTops);
-    populateSelect('bottom-select', VARIANTS.clothesBottoms);
+    // populateSelect('bottom-select', VARIANTS.clothesBottoms);
 
     // Bind Event Listeners
     const bindChange = (id, stateKey) => {
@@ -217,7 +260,7 @@ function initApp() {
     // Bind clothes tops/bottoms
     // bindChange('top-select', 'topStyle');
     bindInput('top-color-picker', 'topColor');
-    bindChange('bottom-select', 'bottomStyle');
+    // bindChange('bottom-select', 'bottomStyle');
     bindInput('bottom-color-picker', 'bottomColor');
 
     // Bind export

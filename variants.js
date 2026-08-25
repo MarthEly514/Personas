@@ -69,12 +69,12 @@ const VARIANTS = {
         {
             id: "shorts",
             name: "Shorts",
-            svgUrl: ``
+            svgUrl: "/svg/clothes/bottom/shorts.svg"
         },
         {
             id: "skirt",
             name: "Skirt",
-            svgUrl: ``
+            svgUrl: "/svg/clothes/bottom/skirt.svg"
         }
     ],
 

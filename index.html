@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personas. | SVGenerator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/icons/icon3.svg" type="image/x-icon">
 </head>
 
 <body>
 
     <header>
-        <h1>Personas.</h1>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
+            <img src="/icons/logo.png" alt="" width="50px">
+            <h1>Personas.</h1>
+        </div>
         <div class="header-actions">
             <button class="btn secondary" id="reset-btn">Reset</button>
             <button class="btn" id="export-svg-btn">Export SVG</button>
@@ -83,12 +87,12 @@
                         <input type="color" id="top-color-picker" value="#B24F6C">
                         <span class="color-value">#B24F6C</span>
                     </div>
-                    <label>Bottom Style
-                        <select id="bottom-select"></select>
-                    </label>
+                    <label>Bottom Style</label>
+                    <div id="bottom-style-grid" class="color-grid"></div>
                     <div class="color-picker-row">
                         <label>Bottom Color</label>
                         <input type="color" id="bottom-color-picker" value="#929292">
+                        <span class="color-value">#929292</span>
                     </div>
                 </div>
             </details>
