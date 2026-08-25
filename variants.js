@@ -49,9 +49,9 @@ const VARIANTS = {
             svgUrl: "/svg/clothes/top/default-top.svg"
         },
         {
-            id: "shirt",
-            name: "T-Shirt",
-            svgUrl: ``
+            id: "pull-over",
+            name: "Pull Over",
+            svgUrl: "/svg/clothes/top/pull-over.svg"
         },
         {
             id: "hoodie",
